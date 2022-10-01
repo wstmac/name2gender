@@ -7,10 +7,10 @@ In this approach, I feed characters in a name one by one through a character lev
 
 ## Dependencies and Installation
 
-- Python >= 3.6 (Recommend to use [Anaconda](https://www.anaconda.com/download/#linux) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html))
+- Python = 3.6 (Recommend to use [Anaconda](https://www.anaconda.com/download/#linux) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html))
 
 (optional for GPU training)
-- [PyTorch >= 1.7](https://pytorch.org/)
+- [PyTorch = 1.7](https://pytorch.org/)
 - NVIDIA GPU + [CUDA](https://developer.nvidia.com/cuda-downloads)
 
 1. Clone repo
@@ -25,7 +25,7 @@ In this approach, I feed characters in a name one by one through a character lev
    cd name2gender
    pip install -r requirements.txt
    ```
-
+\* If you cannot successfully install pytorch, you can install it with conda command, which you can find https://pytorch.org/get-started/previous-versions/ 
 
 ## Dataset Preparation
 
@@ -34,7 +34,7 @@ In this approach, I feed characters in a name one by one through a character lev
     cd data
     ```
 
-1. clean the first name and split the whole data into train, val and testing.
+1. clean the first name and split the whole data into train, val and testing. Defualt split ratio are 0.8, 0.1, 0.1 for train, val and test respectively.
     ```bash
     python clean_data.py
     ```
