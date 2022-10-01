@@ -29,7 +29,7 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # folder name
-    save_folder = f'results/{args.arch}_{args.dropout}_{args.n_hidden}_{args.lr}_{args.epoch}'
+    save_folder = f'results/{args.arch}_{args.batch_size}_{args.dropout}_{args.n_hidden}_{args.learning_rate}_{args.weight_decay}_{args.epoch}'
     if os.path.exists(save_folder):
         timestr = time.strftime("%Y-%m-%d-%H:%M:%S")
         save_folder = save_folder + '_' + timestr
@@ -43,7 +43,7 @@ def main():
         log.info(str(key) + ': ' + str(value))
 
     # SummarWriter
-    summary_writer = SummaryWriter(f'logs/{args.arch}_{args.n_hidden}_{args.lr}_{args.epoch}')
+    summary_writer = SummaryWriter(f'logs/{args.arch}_{args.n_hidden}_{args.learning_rate}_{args.epoch}')
 
 
     #load model
@@ -52,7 +52,7 @@ def main():
     model = model.to(device)
 
     # optimizer
-    optimizer = torch.optim.SGD(model.parameters(), lr=args.lr, momentum=args.momentum, 
+    optimizer = torch.optim.SGD(model.parameters(), lr=args.learning_rate, momentum=args.momentum, 
                                 weight_decay=args.weight_decay)
 
     # loss function

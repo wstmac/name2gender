@@ -10,23 +10,23 @@ def parser_args():
                         help='number of total epochs to run')
     parser.add_argument('--start-epoch', default=0, type=int, metavar='N',
                         help='manual epoch number (useful on restarts)')
-    parser.add_argument('--batch-size', default=128, type=int, 
+    parser.add_argument('--batch-size', '-b', default=128, type=int, 
                         help='Batch size for training')
     # network setting
     parser.add_argument('--arch', '-a', metavar='ARCH', default='LSTM',
                         help='network architecture')
-    parser.add_argument('--dropout', default=0.5, type=float, 
+    parser.add_argument('--dropout', '-d', default=0.5, type=float, 
                         help='dropout rate')
     parser.add_argument('--n-hidden', default=128, type=int,
                         help='print frequency (default: 10)')
-    parser.add_argument('--lr', '--learning-rate', default=0.005, type=float, 
+    parser.add_argument('--learning-rate', '-lr', default=0.005, type=float, 
                         help='initial learning rate')
     parser.add_argument('--momentum', default=0.9, type=float, 
                         help='momentum')
-    parser.add_argument('--weight-decay', default=5e-4, type=float, 
+    parser.add_argument('--weight-decay', '-wd', default=5e-4, type=float, 
                         help='Weight decay for SGD')
-    parser.add_argument('--he-initialization', action='store_true',
-                        help='use He initialization for the model, disable it in default')
+    parser.add_argument('--disable-he-initialization', action='store_true',
+                        help='use He initialization for the model, ebable it in default')
     # others
     parser.add_argument('--logging-freq', default=50, type=int,
                         help='print frequency (default: 10)')
