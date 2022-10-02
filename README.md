@@ -25,7 +25,10 @@ In this approach, I feed characters in a name one by one through a character lev
    cd name2gender
    pip install -r requirements.txt
    ```
-\* If you cannot successfully install pytorch, you can install it with conda command, which you can find https://pytorch.org/get-started/previous-versions/ 
+   \* If you cannot successfully install pytorch, you can install it with conda command, which you can find https://pytorch.org/get-started/previous-versions/ e.g.
+   ```bash
+   conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch
+   ```
 
 ## Dataset Preparation
 
@@ -47,7 +50,7 @@ All logging files in the training process, *e.g.*, log message, checkpoints, and
    configuration.py
    ```
 
-1. Run training code.
+1. Run training code (I have tunned some hyperparameters and set them as the default value. <b>You can just run below command to train the network</b>). 
    ```bash
    python train.py
    ```

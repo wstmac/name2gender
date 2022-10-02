@@ -43,7 +43,7 @@ def main():
         log.info(str(key) + ': ' + str(value))
 
     # SummarWriter
-    summary_writer = SummaryWriter(f'logs/{args.arch}_{args.n_hidden}_{args.learning_rate}_{args.epoch}')
+    summary_writer = SummaryWriter(f'logs/{args.arch}_{args.batch_size}_{args.dropout}_{args.n_hidden}_{args.learning_rate}_{args.weight_decay}_{args.epoch}')
 
 
     #load model
@@ -72,7 +72,7 @@ def main():
     best_epoch = -1
     for epoch in tqdm(range(args.start_epoch, args.epoch)):
         train(train_loader, model, criterion, optimizer, epoch, device)
-        acc = val(train_loader, model, criterion, epoch, device)
+        acc = val(val_loader, model, criterion, epoch, device)
 
         is_best = acc > best
         best = max(acc, best)
@@ -94,14 +94,14 @@ def main():
                 'optimizer': optimizer.state_dict(),
             }, folder=save_folder, filename=f'{epoch}.pth')
     
-    summary_writer.add_scalar("Best Validation Accuracy", best, best_epoch)
+    print(f"Best Validation Accuracy: {best} ({best_epoch})")
 
     # test with best model
     checkpoint = torch.load(f'{save_folder}/model_best.pth')
     best_model = LSTM(LONGEST_NAME, args.n_hidden, N_GENDERS)
     best_model.load_state_dict(checkpoint['state_dict'])
     best_model = best_model.to(device)
-    test(train_loader, best_model, device)
+    test(test_loader, best_model, device)
 
 
 

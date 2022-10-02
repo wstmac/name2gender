@@ -6,20 +6,20 @@ def parser_args():
     # dataset
     parser.add_argument('--num_workers', default=2, type=int, 
                         help='Number of workers used in dataloading')
-    parser.add_argument('--epoch', default=500, type=int, 
+    parser.add_argument('--epoch', default=400, type=int, 
                         help='number of total epochs to run')
     parser.add_argument('--start-epoch', default=0, type=int, metavar='N',
                         help='manual epoch number (useful on restarts)')
-    parser.add_argument('--batch-size', '-b', default=128, type=int, 
+    parser.add_argument('--batch-size', '-b', default=256, type=int, 
                         help='Batch size for training')
     # network setting
     parser.add_argument('--arch', '-a', metavar='ARCH', default='LSTM',
                         help='network architecture')
-    parser.add_argument('--dropout', '-d', default=0.5, type=float, 
+    parser.add_argument('--dropout', '-dp', default=0.5, type=float, 
                         help='dropout rate')
-    parser.add_argument('--n-hidden', default=128, type=int,
+    parser.add_argument('--n-hidden', default=512, type=int,
                         help='print frequency (default: 10)')
-    parser.add_argument('--learning-rate', '-lr', default=0.005, type=float, 
+    parser.add_argument('--learning-rate', '-lr', default=0.01, type=float, 
                         help='initial learning rate')
     parser.add_argument('--momentum', default=0.9, type=float, 
                         help='momentum')
